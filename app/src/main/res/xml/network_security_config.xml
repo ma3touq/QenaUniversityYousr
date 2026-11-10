@@ -1,1 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
 
+    <!-- نضيف جذر Sectigo R46 الرسمي (self-signed) كجهة موثوقة لموقع الجامعة فقط،
+         لأن أندرويد 10 و11 و12 لا يعرفه ولا يحمّل الشهادة المتقاطعة تلقائياً -->
+    <domain-config>
+        <domain includeSubdomains="true">qu.edu.eg</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="@raw/sectigo_root_r46" />
+        </trust-anchors>
+    </domain-config>
+</network-security-config>
